@@ -1,0 +1,33 @@
+.link1 {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.btnimage {
+    background-image: url("/assets/button.png");
+    border-radius: 20px;
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    border: 0px solid white;
+}
+
+label,
+a {
+    font-weight: 500;
+}
+
+.container {
+    background-color: darkkhaki;
+    /* background-image: url('/assets/formbanner.jpg'); */
+    border-radius: 20px;
+}
+
+.ctn {
+    background-color: lightsteelblue;
+}
+
+.login {
+    color: white;
+    font-weight: bold;
+}

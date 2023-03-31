@@ -1,0 +1,85 @@
+<div class="container col-md-4 my-5">
+    <br>
+    <h3 class="text-center text-success">Company Info</h3>
+    <div class="register-form">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="cname">Company name <span class="text-danger">*</span></label>
+                <input type="text" formControlName="cname" class="form-control"
+                    [ngClass]="{ 'is-invalid':submitted && f['cname'].errors}">
+                <div *ngIf="submitted && f['cname'].errors" class="invalid-feedback">
+                    <div *ngIf="f['cname'].errors['required']" class="text-danger">Username is required</div>
+                    <div *ngIf="f['cname'].errors['minlength']" class="text-danger">username must be atleast 6
+                        characters</div>
+                    <div *ngIf="f['cname'].errors['maxlength']" class="text-danger">username must not exceed 15
+                        characters</div>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <label for="email">Email <span class="text-danger">*</span></label>
+                <input type="email" formControlName="email" class="form-control"
+                    [ngClass]="{'is-invalid':submitted && f['email'].errors}">
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                    <div *ngIf="f['email'].errors['required']" class="text-danger">email is required</div>
+                    <div *ngIf="f['email'].errors['email']" class="text-danger">Email should be valid </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="phone">Phone number <span class="text-danger">*</span></label>
+                <input type="text" formControlName="phone" class="form-control"
+                    [ngClass]="{ 'is-invalid':submitted && f['phone'].errors}">
+                <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+                    <div *ngIf="f['phone'].errors['required']" class="text-danger">Phone number is required</div>
+                    <div *ngIf="f['phone'].errors['minlength']" class="text-danger">Phoneno should contain only 10 digit
+                    </div>
+                    <div *ngIf="f['phone'].errors['maxlength']" class="text-danger">Phoneno should contain only 10 digit
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="form-group">
+                    <a>Machines <button type="button" (click)="addSkillFormGroup()" class="btn btn-primary"
+                            class="btnimage"></button></a>
+                </div>
+
+            </div>
+            <br>
+            <ng-container *ngFor="let skillForm of skillsForms.controls;let i=index">
+                <div class="form-group">
+                    <label [for]="'machinetype'+i" class="form-label">Machine Type</label>
+                    <select class="form-select" id="'machinetype'+i" formControlName="machinetype">
+                        <option>Select</option>
+                        <option>Inclined plane</option>
+                        <option>Lever</option>
+                        <option>Wedge</option>
+                        <option>Wheel and axle</option>
+                        <option>Pulley</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label [for]="'amount'+i" class="form-label">Amount <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="'amount'+i" formControlName="amount">
+                </div>
+                <br>
+                <div>
+                    <button class="btn btn-danger" type="button" (click)="removeskillFormGroup(i)">Delete</button>
+                </div>
+                <br>
+            </ng-container>
+            <br>
+            <button type="submit" class="btn btn-success form-control">Place order</button>
+            <br>
+            <br>
+            <button type="reset" (click)="onReset()" class="btn btn-danger form-control">Reset</button>
+            <br>
+            <br>
+            <div *ngIf="isDisplay" class="text-center login">Login Successful</div>
+        </form>
+        <br>
+    </div>
+</div>
